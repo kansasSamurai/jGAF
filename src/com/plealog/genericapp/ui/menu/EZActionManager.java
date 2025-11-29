@@ -1,4 +1,4 @@
-/* Copyright (C) 2003-2016 Patrick G. Durand
+/* Copyright (C) 2003-2023 Patrick G. Durand
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -421,7 +421,7 @@ public class EZActionManager implements PropertyChangeListener {
         resource,
         key + SUFFIX_TEXT);
     menu.setText(mName);
-    menu.setFont(EZEnvironmentImplem.getMainFont(null));
+    menu.setFont(EZEnvironmentImplem.getMainFont(resource));
     items = new ArrayList<Component>();
     for (i = 0; i < itemKeys.length; i++) {
       if (itemKeys[i].equals("-")) {
@@ -643,12 +643,7 @@ public class EZActionManager implements PropertyChangeListener {
         }
       }
 
-      //for MacOs X, let the AppleCOnnector do the job
-      if (EZEnvironmentImplem.getOSType()==EZEnvironment.MAC_OS){
-        return bRet;
-      }
-
-      //for all other systems, do the System.exit() if needed
+      //do the System.exit() if needed
       if(bRet){
         System.exit(0);
       }
